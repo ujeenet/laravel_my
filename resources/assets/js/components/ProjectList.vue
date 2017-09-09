@@ -6,10 +6,10 @@
             return {
                 project: {
                     title: "",
+                    description: "",
+                    type: "",
                     status: "",
-                    estimated_duration: "",
-                    resource_id: "",
-                    priority:"",
+                    starts_at: "",
                 },
                 resources:[],
                 status:"",
@@ -47,17 +47,17 @@
                 });
             },
             updateProject: function(pid){
-                axios.post('/project/update/'+ pid, )
+                axios.post('/project/update/'+ pid, this.project).then(function (response) {
+                    console.log(response);
+                }.bind(this)).catch(function (errors) {
+                    console.log(errors);
+                });
             },
-            deleteProject: function (id ,form, checkpointid){
-                axios.delete('/project/delete/'+form.id).then(function(response)
+            deleteProject: function (id, index){
+                axios.delete('/project/delete/'+ id).then(function(response)
                 {
-                    this.forms.splice(id, 1);
-                    this.forms.forEach(function(item, i, arr)
-                    {
-                        item.priority=i+1;
-                    });
-                    this.sendForms();
+                    this.forms.data.splice(index, 1);
+                    console.log(response);
                 }.bind(this));
 
             },
@@ -72,7 +72,7 @@
 
             },
             addProject: function () {
-                axios.post("/project/create", { "checkpoint": this.project}).then(function(response)
+                axios.post("/project/create", {"project": this.project}).then(function(response)
                 {
                     this.forms.push({
                         'id': response.data.id,
@@ -84,11 +84,9 @@
                         'updated_at': response.data.updated_at,
                         'resource_id': response.data.resource_id,
                     });
-                    this.forms.forEach(function(item, i, arr){
-                        item.priority=i+1;
-                    });
-                    this.estimateDates();
-                }.bind(this));
+                }.bind(this)).catch(function (errors) {
+                   console.log(errors);
+                });
             },
             estimateDates: function () {
                 axios.get('/checkpoint/estimate/' + this.pid).then(function (response) {

@@ -41823,10 +41823,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             project: {
                 title: "",
+                description: "",
+                type: "",
                 status: "",
-                estimated_duration: "",
-                resource_id: "",
-                priority: ""
+                starts_at: ""
             },
             resources: [],
             status: "",
@@ -41863,15 +41863,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         updateProject: function updateProject(pid) {
-            axios.post('/project/update/' + pid);
+            axios.post('/project/update/' + pid, this.project).then(function (response) {
+                console.log(response);
+            }.bind(this)).catch(function (errors) {
+                console.log(errors);
+            });
         },
-        deleteProject: function deleteProject(id, form, checkpointid) {
-            axios.delete('/project/delete/' + form.id).then(function (response) {
-                this.forms.splice(id, 1);
-                this.forms.forEach(function (item, i, arr) {
-                    item.priority = i + 1;
-                });
-                this.sendForms();
+        deleteProject: function deleteProject(id, index) {
+            axios.delete('/project/delete/' + id).then(function (response) {
+                this.forms.data.splice(index, 1);
+                console.log(response);
             }.bind(this));
         },
         sendForms: function sendForms() {
@@ -41882,7 +41883,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         addProject: function addProject() {
-            axios.post("/project/create", { "checkpoint": this.project }).then(function (response) {
+            axios.post("/project/create", { "project": this.project }).then(function (response) {
                 this.forms.push({
                     'id': response.data.id,
                     'title': response.data.title,
@@ -41893,11 +41894,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     'updated_at': response.data.updated_at,
                     'resource_id': response.data.resource_id
                 });
-                this.forms.forEach(function (item, i, arr) {
-                    item.priority = i + 1;
-                });
-                this.estimateDates();
-            }.bind(this));
+            }.bind(this)).catch(function (errors) {
+                console.log(errors);
+            });
         },
         estimateDates: function estimateDates() {
             axios.get('/checkpoint/estimate/' + this.pid).then(function (response) {
@@ -41987,13 +41986,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 priority: ""
             },
             resources: [],
-            forms: {}
+
+            forms: {},
+            formsDone: {},
+            formsOnhold: {}
         };
     },
     methods: {
         getCheckpoints: function getCheckpoints() {
             axios.get("/checkpoint/listall/" + this.pid).then(function (response) {
-                this.forms = response.data;
+                console.log(response);
+                this.forms = response.data.in_process;
+                this.formsDone = response.data.done;
+                this.formsOnhold = response.data.on_hold;
                 this.forms.sort(function (a, b) {
                     return a.priority - b.priority;
                 });
@@ -42036,6 +42041,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         sendForms: function sendForms() {
             axios.post('/checkpoint/update', { forms: this.forms }).then(function () {
+                this.forms.forEach(function (item, i, arr) {
+                    item.priority = i + 1;
+                });
                 this.estimateDates();
             }.bind(this)).catch(function (errors) {
                 console.log(errors);

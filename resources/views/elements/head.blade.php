@@ -11,6 +11,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>{{ config('app.name') }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    {{--<script type="text/javascript" scr="/bower_components/jquery/dist/jquery.js"></script>--}}
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
@@ -23,14 +25,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
           apply the skin class to the body tag so the changes take effect. -->
     <link rel="stylesheet" href="/dist/css/skins/skin-blue.min.css">
 
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
     <![endif]-->
+
     <script>
         // rename myToken as you like
         window.myToken =  <?php echo json_encode([
@@ -42,4 +45,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <style type="text/css">
+
+        th {
+            text-align: center;
+            font-size: x-small;
+
+        }
+
+        td {
+            text-align: center;
+            font-size: x-small;
+
+        }
+        select {
+            text-align: center;
+            font-size: x-small;
+
+        }
+        .form-control {
+            text-align: center;
+            font-size: x-small;
+
+        }
+        .form-group {
+            text-align: center;
+            font-size: x-small;
+
+        }
+    </style>
 </head>

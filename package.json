@@ -20,6 +20,12 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "moment": "^2.18.1"
+    "dev-server": "0.0.2",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "moment": "^2.18.1",
+    "of": "^1.0.0",
+    "peer": "^0.2.8",
+    "vue-js-dropdown": "^1.0.2",
+    "webpack": "^3.5.5"
   }
 }

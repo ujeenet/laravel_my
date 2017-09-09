@@ -21,7 +21,7 @@ class CreateCheckpointsTable extends Migration
             $table->string('title');
             $table->float('estimated_duration')->nullable();;
             $table->integer('real_duration')->nullable();
-            $table->enum('status', ['On hold','In process','Finished'])->nullable();;
+            $table->enum('status', ['on_hold','in_process','done'])->nullable();;
             $table->integer('start_date')->nullable();;
             $table->integer('finish_date')->nullable();;
             $table->timestamps();

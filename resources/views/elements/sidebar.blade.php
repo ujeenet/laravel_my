@@ -9,13 +9,13 @@
                 <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                {{--<p>--}}
+                <p>
                     {{--@if(Auth::user())--}}
 
                         {{--{{(Auth::user()->profile->name) }}{{(Auth::user()->profile->lastname)}}--}}
 
                     {{--@endif--}}
-                {{--</p>--}}
+                </p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -39,7 +39,7 @@
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="treeview">
-                <a href="#"><i class="fa fa-list"></i> <span>Projects</span>
+                <a href="#"><i class="fa fa-list"></i><span>Projects</span>
                     <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>

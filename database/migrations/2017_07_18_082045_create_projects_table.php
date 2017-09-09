@@ -20,6 +20,7 @@ class CreateProjectsTable extends Migration
             $table->string('title');
             $table->integer('exp_duration')->nullable();
             $table->integer('duration')->nullable();
+            $table->text('description')->nullable();
             $table->enum('status', ['on_hold','in_process','done']);
             $table->enum('type', ['upgrade','fix','experimental','new']);
             $table->integer('starts_at');

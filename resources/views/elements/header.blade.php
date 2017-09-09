@@ -7,9 +7,9 @@
         <!-- Logo -->
         <a href="/home" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini">Home</span>
+            <span class="logo-mini"><b>P</b>M</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Proman </b>Home</span>
+            <span class="logo-lg"><b>Project</b>Manager</span>
         </a>
 
         <!-- Header Navbar -->
@@ -21,7 +21,8 @@
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <!-- Messages: style can be found in dropdown.less-->
+
+                <!-- Messages: style can be found in dropdown.less-->
                     <li class="dropdown messages-menu">
                         <!-- Menu toggle button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -118,7 +119,6 @@
                         </ul>
                     </li>
                     <!-- User Account Menu -->
-
                     <li class="dropdown user user-menu">
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -131,21 +131,19 @@
                                 @endif
                         </span>
                         </a>
-
                         <ul class="dropdown-menu">
-                        @if(Auth::check())
                             <!-- The user image in the menu -->
                             <li class="user-header">
                                 <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-
+                                    @if(Auth::check())
                                         {{ Auth::user()->profile->name}} {{ Auth::user()->profile->lastname}}
 
                                     <small>Member since - {{ \Carbon\Carbon::createFromTimestamp(strtotime(Auth::user()->created_at))->diffForHumans() }}</small>
+                                    @endif
                                 </p>
                             </li>
-                        @endif
                             <!-- Menu Body -->
                             <li class="user-body">
                                 <div class="row">
@@ -167,10 +165,9 @@
                                     <a href="/profile" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-
-                                    <a href="{{ route('logout') }}"
+                                    <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">
+                                                     document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
 
@@ -180,10 +177,6 @@
                                 </div>
                             </li>
                         </ul>
-                    </li>
-                    <!-- Control Sidebar Toggle Button -->
-                    <li>
-                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                     </li>
                 </ul>
             </div>

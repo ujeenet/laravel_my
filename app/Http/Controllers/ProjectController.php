@@ -25,9 +25,26 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+        $data=$request->project;
+
+        $project=Project::create([
+           'user_id'=> Auth::id(),
+           'title'=>$data['title'],
+            'description'=>$data['description'],
+           'type'=>$data['type'],
+           'status'=>$data['status'],
+           'starts_at'=>$data['starts_at'],
+
+           ]);
+       if ($project){
+           return "success";
+       }else{
+           return "go to hell bitch";
+       };
+
     }
 
     /**
@@ -62,7 +79,7 @@ class ProjectController extends Controller
 
         if ($parameter == 0)
         {
-            $projects = Auth::user()->projects()->orderBy('created_at', 'ASC')->paginate(10);
+            $projects = Auth::user()->projects()->orderBy('created_at', 'ASC')->paginate(5);
         }
         elseif ($parameter == 1)
         {
@@ -109,8 +126,17 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy($id)
     {
-        //
+
+        echo $id;
+
+        if ($destroy = Project::destroy($id)) {
+
+            return "Project Successfully Deleted";
+        }else{
+            return "Project Was not Deleted";
+        }
+
     }
 }

@@ -3,6 +3,8 @@
 
 @include('elements.header')
 @include('elements.sidebar')
+
+
 <!--
 BODY TAG OPTIONS:
 =================

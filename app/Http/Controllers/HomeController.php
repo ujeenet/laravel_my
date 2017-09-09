@@ -33,7 +33,7 @@ class HomeController extends Controller
 //        $done = Project::where(['user_id'=>Auth::id(),'status'=>'done'])->count();
         //dd ($projects);
 
-        $resources = Resource::where(['owner_id'=>Auth::id()])->get();
+        $resources = Resource::where(['owner_id'=>Auth::id()])->orderBy('name','ASC')->paginate(5);
 
         $all = $projects->count();
         $active = $projects->where('status','in_process')->count();

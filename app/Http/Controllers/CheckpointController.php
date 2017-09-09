@@ -31,9 +31,12 @@ class CheckpointController extends Controller
      */
     public function listall($pid)
     {
-       $checkpoints = Checkpoint::where(['project_id'=>$pid])->orderBy('id', 'DESC')->get();
 
-       return $checkpoints;
+       $checkpoints = Checkpoint::where(['project_id'=>$pid])->orderBy('id', 'DESC')->get();
+       $checkpoints = $checkpoints->groupBy('status');
+
+        return $checkpoints;
+
     }
 
     public function create(Request $request)
@@ -143,7 +146,7 @@ return "Checkpoint successfully destroyed";
             foreach ($resources as $resource)
             {
 
-                $checkpoints = Checkpoint::where(['project_id'=>$pid, 'resource_id'=>$resource->id])->orderBy('priority','ASC')->get();
+                $checkpoints = Checkpoint::where(['project_id'=>$pid, 'resource_id'=>$resource->id ,'status'=>'in_process'])->orderBy('priority','ASC')->get();
 
                 $previous_date = strtotime($starttime);
 
@@ -182,8 +185,7 @@ return "Checkpoint successfully destroyed";
                         }
                 }
 
-
-         return   $checkpointlist = Checkpoint::where(['project_id'=>$pid])->orderBy('id', 'DESC')->get();
+         return   $checkpointlist = Checkpoint::where(['project_id'=>$pid,'status'=>'in_process'])->orderBy('id', 'DESC')->get();
 
     }
 

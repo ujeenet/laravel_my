@@ -9,16 +9,16 @@
     <div class="container-fluid">
         <table class=" table table-striped table-responsive table-bordered table-inverse">
             <thead>
-            <tr>
-                <th>Name</th>
-                <th>Middlename</th>
-                <th>Lastname</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Position</th>
-                <th>Birthday</th>
-                <th>Options</th>
-            </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Middlename</th>
+                    <th>Lastname</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Position</th>
+                    <th>Birthday</th>
+                    <th>Options</th>
+                </tr>
             </thead>
             <tbody>
             <tr v-for="resource in resources">
@@ -47,7 +47,7 @@
                         <div class="box-header with-border">
                             <h3 class="box-title">{{__('Add Team Mate')}}</h3>
                             <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                <button type="button" class="btn btn-box-tool btn-primary" data-widget="collapse"><i class="fa fa-plus"></i>
                                 </button>
                             </div>
                         </div>

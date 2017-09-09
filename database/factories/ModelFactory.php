@@ -19,6 +19,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+        'is_admin' => randomElement(['admin','user']),
     ];
 });
 $factory->define(App\Profile::class, function (Faker\Generator $faker) {
@@ -65,7 +66,7 @@ $factory->define(App\Resource::class, function (Faker\Generator $faker) {
         'title' => $faker->sentence(1),
         'phone' => $faker->sentence(1),
         'email' => $faker->sentence(1),
-        'birthdate' => $faker->dateTimeThisCentury(1),
+        'birthdate' => $faker->sentence(1),
         'owner_id' => $faker->numberBetween(1,5),
     ];
 });

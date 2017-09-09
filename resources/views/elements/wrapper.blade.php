@@ -13,10 +13,11 @@
     <!-- Main content -->
     <section class="content container-fluid">
 
-
         <div id="app">
         @yield('content')
         </div>
+
+        <script src="{{ asset('js/app.js') }}"></script>
     </section>
     <!-- /.content -->
 </div>

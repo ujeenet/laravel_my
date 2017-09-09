@@ -94,11 +94,15 @@ immediately after the control sidebar -->
 <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/dist/js/adminlte.min.js"></script>
-
-<script src="/js/app.js"></script>
-
+<!-- Scripts dropdown-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".dropdown-toggle").dropdown();
+    });
+</script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
 </body>
 </html>
+

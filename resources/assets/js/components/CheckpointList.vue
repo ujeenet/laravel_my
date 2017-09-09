@@ -11,14 +11,22 @@
                      priority:"",
                  },
                  resources:[],
+
                  forms: {
+                 },
+                 formsDone: {
+                 },
+                 formsOnhold: {
                  }
              }
          },
         methods:{
              getCheckpoints: function (){
                 axios.get("/checkpoint/listall/"+this.pid).then(function(response){
-                    this.forms = response.data;
+                    console.log(response);
+                    this.forms = response.data.in_process;
+                    this.formsDone = response.data.done;
+                    this.formsOnhold = response.data.on_hold;
                     this.forms.sort(function (a,b) {
                         return a.priority-b.priority;
                     });
@@ -65,6 +73,9 @@
             sendForms: function () {
                 axios.post('/checkpoint/update', {forms:this.forms}).then(function()
                 {
+                    this.forms.forEach(function(item, i, arr){
+                        item.priority=i+1;
+                    })
                     this.estimateDates();
 
                 }.bind(this)).catch(function(errors){
