@@ -9,10 +9,10 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     @if (Auth::check())
-                        <h4 class="text-center text-aqua"><a href="/profile">Hello Awesome {{ Auth::user()->profile->name}}. Nice to see you!!!</a></h4>
+                        <h4 class="text-center text-aqua"><a href="/profile">Привет {{ Auth::user()->profile->name}}. !!!</a></h4>
                     @else
-                     <h4 class="text-center">You are not logged in!</h4>
-                      <h1 class="text-center">  <a href="/login">Please login using your e-mail and password</a></h1>
+                     <h4 class="text-center">Вы не вошли!</h4>
+                      <h1 class="text-center">  <a href="/login">Войдите со своей учетной записью</a></h1>
                     @endif
                 </div>
             </div>
@@ -28,12 +28,12 @@
                 <div class="col-md-12">
                     <div class="container">
                         <div class="col-md-4 ">
-                            <h3 class="text-aqua text-center">My Team Projects</h3>
+                            <h3 class="text-aqua text-center">Проекты нашей компании</h3>
                             <ul class="well">
                                 <div  class="form-group ">
                                     <a  href="/project/index/0">
                                         <li class="btn btn-default" style="width: 200px;">
-                                            All Projects
+                                            Все проекты
                                         </li>
                                     </a>
                                     <strong class="pull-right">{{$all}}</strong>
@@ -41,7 +41,7 @@
                                 <div class="form-group">
                                     <a href="/project/listall/1">
                                         <li class="btn btn-default" style="width: 200px;">
-                                             Active Projects
+                                             Активнык
                                         </li>
                                     </a>
                                     <strong class="pull-right">{{$active}}</strong>
@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <a href="/project/listall/2">
                                         <li class="btn btn-default" style="width: 200px;">
-                                            Projects Pending
+                                            Задержаны
                                         </li>
                                     </a>
                                     <strong class="pull-right">{{$on_hold}}</strong>
@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <a  href="/project/listall/3">
                                     <li class="btn btn-default"  style="width: 200px;">
-                                            Projects Finished
+                                            Оконченные
                                         </li>
                                     </a>
                                     <strong class="pull-right">{{$done}}</strong>
@@ -65,7 +65,7 @@
                             </ul>
                     </div>
                     <div class="col-md-4">
-                        <h3 class="text-aqua text-center"><a href="/resource/index">My Great Team</a></h3>
+                        <h3 class="text-aqua text-center"><a href="/resource/index">Наша команда</a></h3>
                         <ul class="messages-menu">
                             @foreach($resources as $resource)
 
@@ -76,19 +76,19 @@
                                 @endforeach
                         </ul>
                     </div>
-                    <div class="col-md-4">
-                        <h3 class="text-aqua text-center"><a href="calendar/list">Today is</h3>
-                        <ul>
-<li>
-    day and date
-</li>
-                        <li>
-                full date
-                        </li>
-closest critical tasks to check
-                        </ul>
-                    </div>
-                    </div>
+                    {{--<div class="col-md-4">--}}
+                        {{--<h3 class="text-aqua text-center"><a href="calendar/list">Today is</h3>--}}
+                        {{--<ul>--}}
+{{--<li>--}}
+    {{--day and date--}}
+{{--</li>--}}
+                        {{--<li>--}}
+                {{--full date--}}
+                        {{--</li>--}}
+{{--closest critical tasks to check--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
                 </div>
             </div>
         </div>

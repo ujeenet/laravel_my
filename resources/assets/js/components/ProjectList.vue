@@ -10,6 +10,8 @@
                     type: "",
                     status: "",
                     starts_at: "",
+
+
                 },
                 resources:[],
                 status:"",
@@ -89,7 +91,8 @@
                         'title': response.data.title,
                         'estimated_duration': response.data.estimated_duration,
                         'status': response.data.status,
-                        'project_id': response.data.project_id,
+                        'type': response.data.type,
+                        'starts_at': response.data.starts_at,
                         'created_at': response.data.created_at,
                         'updated_at': response.data.updated_at,
                         'resource_id': response.data.resource_id,

@@ -17,7 +17,7 @@
                     {{--@endif--}}
                 </p>
                 <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
             </div>
         </div>
 
@@ -36,36 +36,36 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">Menu</li>
+            <li class="header">Меню</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="treeview">
-                <a href="#"><i class="fa fa-list"></i><span>Projects</span>
+                <a href="#"><i class="fa fa-list"></i><span>Проекты</span>
                     <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                     <ul class="treeview-menu">
 {{-- I send status by numbers because VUE JS does not wat to accept strings.--}}
-                        <li><a href="/project/index/0">All</a></li>
-                        <li><a href="/project/listall/1">In-process</a></li>
-                        <li><a href="/project/listall/2">On-hold</a></li>
-                        <li><a href="/project/listall/3">Finished</a></li><li>
+                        <li><a href="/project/index/0">Все проекты</a></li>
+                        <li><a href="/project/listall/1">В процессе</a></li>
+                        <li><a href="/project/listall/2">Задержаны</a></li>
+                        <li><a href="/project/listall/3">Окончены</a></li><li>
                         @if (Auth::check())
                             @if (Auth::user()->is_admin=='admin')
-                            <li><a href="/project/listall/4">Discarded</a></li>
+                            <li><a href="/project/listall/4">Сброшены</a></li>
                             @endif
                         @endif
-                        <li><a href="/project/listall/5">Schedule</a></li>
+                        <li><a href="/project/listall/5">Планы работ</a></li>
                     </ul>
-            <li><a href="/resource/index"><i class="fa fa-user"></i> <span>Resources</span></a></li>
+            <li><a href="/resource/index"><i class="fa fa-user"></i> <span>Команда</span></a></li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-list"></i> <span>Repports</span>
+                <a href="#"><i class="fa fa-list"></i> <span>Отчеты</span>
                     <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Month</a></li>
-                    <li><a href="#">Year</a></li>
+                    <li><a href="#">Помесячно</a></li>
+                    <li><a href="#">Годовой отчет</a></li>
                 </ul>
             </li>
         </ul>

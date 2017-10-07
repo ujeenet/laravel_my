@@ -65,19 +65,19 @@
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
                 @if (Auth::check())
-                    <a href="{{ url('/home') }}">Home</a>
+                    <a href="{{ url('/home') }}">Домой</a>
                     <a href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                        Logout
+                        Выйти
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
                 @else
-                    <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
+                    <a href="{{ url('/login') }}">Войти</a>
+                    <a href="{{ url('/register') }}">Зарегатся</a>
 
                 @endif
             </div>
@@ -90,7 +90,7 @@
 
                 <div class="links">
 
-                                NUBE Studios All Rights Reserved
+                                NOOB Studios All Rights are Fucked Up
                 </div>
             </div>
         </div>

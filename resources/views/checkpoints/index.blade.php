@@ -1,17 +1,14 @@
 @extends ('layouts.proman')
 
 @section('content')
-
                                                   {{--Project details--}}
-
-
     <div class="container-fluid">
-        <h3>Project id: {{$project->id}} Project name: {{$project->title}}</h3>
-
-        <div class="row pull-right">
-            <br class="pull-right"> Created: {{$project->created_at}}</br>
-            <br class="pull-right"> Updated: {{$project->updated_at}}</br>
-            <br class="pull-right"> Started: {{$project->starts_at}}</br>
+        <h3>Номер проекта: {{$project->id}} Название проекта: {{$project->title}}</h3>
+        <h3>Описание: {{$project->description}} </h3>
+        <div>
+             Создан: {{$project->created_at}}
+             Обновлен: {{$project->updated_at}}
+             Начат: {{$project->starts_at}}
         </div>
     </div>
 
@@ -23,14 +20,14 @@
                 <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th style="width: 50px;">Priority</th>
-                                <th>Title</th>
-                                <th style="width: 50px;">Duration</th>
-                                <th>Start</th>
-                                <th>Finish</th>
-                                <th style="width: 120px;">Status</th>
-                                <th style="width: 200px;">TeamMate</th>
-                                <th style="width: 150px">Options</th>
+                                <th style="width: 50px;">Приоритет</th>
+                                <th>Название</th>
+                                <th style="width: 50px;">Длительность</th>
+                                <th>Начало</th>
+                                <th>Окончание</th>
+                                <th style="width: 120px;">Статус</th>
+                                <th style="width: 200px;">Ответственный</th>
+                                <th style="width: 150px">Опции</th>
                             </tr>
                         </thead>
                     <form>
@@ -46,9 +43,9 @@
                                 <td>@{{ convertTime(form.finish_date) }}</td>
                                 <td>
                                     <select class="form-control" v-model="form.status">
-                                        <option value="on_hold">On hold</option>
-                                        <option value="in_process">In process</option>
-                                        <option value="done">Finished</option>
+                                        <option value="in_process">В процессе</option>
+                                        <option value="on_hold">Задержан</option>
+                                        <option value="done">Закончен</option>
                                     </select>
                                 </td>
                                 <td >
@@ -69,35 +66,35 @@
                                     </div>
                             </tr>
                                 <td colspan="8"><a href="#" class="btn btn-success btn-lg" href="#" @click.prevent="sendForms()">
-                                        <i class="fa fa-refresh"></i>Refresh checkpoint list</a></td>
+                                        <i class="fa fa-refresh"></i>Обновить контрольные точки</a></td>
                             </tr>
                             <tr>
 
                                 <td colspan="2">
                                     <div class="form-group">
-                                        <label>Title</label>
+                                        <label>Название</label>
                                         <input class="form-control" type="text" v-model="checkpoint.title">
                                     </div>
                                 </td>
                                 <td>
                                     <div  class="from-group">
-                                        <label>Duration</label>
+                                        <label>Длительность</label>
                                         <input  class="form-control" type="text" v-model="checkpoint.estimated_duration">
                                     </div>
                                 </td>
                                 <td c colspan="2">
                                     <div class="form-group">
-                                        <label>Status</label>
+                                        <label>Статус</label>
                                         <select class="text-center form-control text-sm" v-model="checkpoint.status">
-                                            <option value="on_hold">On hold</option>
-                                            <option value="in_process">In process</option>
-                                            <option value="done">Finished</option>
+                                            <option value="in_process">В процессе</option>
+                                            <option value="on_hold">Задержан</option>
+                                            <option value="done">Окончен</option>
                                         </select>
                                     </div>
                                 </td>
                                 <td  colspan="2" >
                                     <div class="form-group">
-                                        <label>Teammate</label>
+                                        <label>Ответственный</label>
                                     <select class="text-center form-control" v-model="checkpoint.resource_id">
                                         <option v-for="resource in resources" v-bind:value="resource.id">@{{ resource.name }}</option>
                                     </select>
@@ -105,7 +102,7 @@
                                 </td>
                                 <td>
                                     <a href="#" class="btn btn-lg btn-success text-sm" @click.prevent="addCheckpoint()">
-                                        Add new <br> checkpoint</a>
+                                        Добавить <br> контрольную точку</a>
                                 </td>
                             </tr>
 
@@ -118,7 +115,7 @@
                 <div class="container-fluid>">
                     <div class="box box-primary collapsed-box">
                         <div class="box-header with-border">
-                            <h3 class="box-title"> Checkpoints On Hold </h3>
+                            <h3 class="box-title"> Задержанные </h3>
                             <div class="box-tools pull-right">
                                 <a class="btn btn-primary btn-sm" data-widget="collapse">
                                     <i class="fa fa-plus"></i>
@@ -129,13 +126,13 @@
                             <table class="table trable-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th style="width: 700px;">Title</th>
-                                    <th style="width: 50px;">Duration</th>
-                                    <th style="width: 150px;">Status</th>
-                                    <th>Started</th>
-                                    <th>Finished</th>
-                                    <th style="width: 200px;">TeamMate</th>
-                                    <th style="width: 150px">Options</th>
+                                    <th style="width: 700px;">Название</th>
+                                    <th style="width: 50px;">Длительность</th>
+                                    <th style="width: 150px;">Статус</th>
+                                    <th>Начат</th>
+                                    <th>Окончен</th>
+                                    <th style="width: 200px;">Ответственный</th>
+                                    <th style="width: 150px">Опции</th>
                                 </tr>
 
                                 </thead>
@@ -145,9 +142,9 @@
                                     <td>@{{ form.estimated_duration }}</td>
                                     <th>
                                         <select class="form-control" v-model="form.status">
-                                            <option value="on_hold">On hold</option>
-                                            <option value="in_process">In process</option>
-                                            <option value="done">Finished</option>
+                                            <option value="on_hold">Задержан</option>
+                                            <option value="in_process">В процессе</option>
+                                            <option value="done">Окончен</option>
                                         </select>
                                     </th>
                                     <th>@{{ convertTime(form.start_date) }}</th>
@@ -171,7 +168,7 @@
             <div class="container-fluid>">
                 <div class="box box-primary collapsed-box">
                     <div class="box-header with-border">
-                        <h3 class="box-title"> Checkpoints Done</h3>
+                        <h3 class="box-title">Оконченные контрольные точки</h3>
                         <div class="box-tools pull-right">
                             <a class="btn btn-primary btn-sm" data-widget="collapse">
                                 <i class="fa fa-plus"></i>
@@ -182,13 +179,13 @@
                         <table class="table trable-striped table-bordered">
                             <thead>
                             <tr>
-                                <th style="width: 700px;">Title</th>
-                                <th style="width: 50px;">Duration</th>
-                                <th style="width: 150px;">Status</th>
-                                <th>Started</th>
-                                <th>Finished</th>
-                                <th style="width: 200px;">TeamMate</th>
-                                <th style="width: 150px">Options</th>
+                                <th style="width: 700px;">Название</th>
+                                <th style="width: 50px;">Длительность</th>
+                                <th style="width: 150px;">Статус</th>
+                                <th>Начат</th>
+                                <th>Окончен</th>
+                                <th style="width: 200px;">Ответственный</th>
+                                <th style="width: 150px">Опции</th>
                             </tr>
 
                             </thead>
@@ -198,9 +195,9 @@
                                 <td>@{{ form.estimated_duration }}</td>
                                 <th>
                                     <select class="form-control" v-model="form.status">
-                                        <option value="on_hold">On hold</option>
-                                        <option value="in_process">In process</option>
-                                        <option value="done">Finished</option>
+                                        <option value="on_hold">Задержан</option>
+                                        <option value="in_process">В процессе</option>
+                                        <option value="done">Окончен</option>
                                     </select>
                                 </th>
                                 <th>@{{ convertTime(form.start_date) }}</th>

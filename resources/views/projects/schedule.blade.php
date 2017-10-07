@@ -25,22 +25,18 @@
                              </tr>
                          </thead>
                 @foreach($project->checkpoints->sortBy('priority') as $checkpoint)
-                        <tbody>
+                         <tbody>
                             <tr>
                                 <td>{{$checkpoint->priority}}</td>
                                 <td>{{$checkpoint->title}}</td>
 {{--                                <td>{{$checkpoint->start_date}}</td>--}}
-                                <td>{{$checkpoint->finish_date}}</td>
-
+                                <td>{{ \Carbon\Carbon::createFromTimestamp($checkpoint->finish_date)->toDateString()}}</td>
                                 <td>
-{{$checkpoint->resource->lastname }} {{$checkpoint->resource->name }}
-
-
-
+                                    {{$checkpoint->resource->lastname }} {{$checkpoint->resource->name }}
                                 </td>
                                 <td></td>
                             </tr>
-                        </tbody>
+                         </tbody>
                      @endforeach
                   </table>
     @endforeach

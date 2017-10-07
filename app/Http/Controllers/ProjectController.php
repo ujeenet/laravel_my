@@ -158,14 +158,32 @@ class ProjectController extends Controller
     {
        $project = Project::where('id',$pid)->first();
 
-       print_r($request->status);
+       if ($project->type=='schedule' && $request->status=='done')
+       {
+
+           $nextproject=$project->replicate();
+           $nextproject->status = 'in_process';
+           $nextproject->push();
+
+           foreach ($project->checkpoints()->get() as $checkpoint)
+           {
+
+               if ($checkpoint->status != 'done')
+               {
+                  $newcheckpoint = $checkpoint->replicate();
+                  $newcheckpoint->project_id=$nextproject->id;
+                  $newcheckpoint->push();
+               }
+           }
+
+       }
 
        $project->status=$request->status;
+       $project->starts_at->$request->starts_at;
 
        $update = $project->save();
-       dd ($update);
 
-//       return $update;
+       //return $update;
     }
 
     /**
@@ -179,6 +197,7 @@ class ProjectController extends Controller
 
         echo $id;
         $project=Project::where('id',$id)->first();
+
         $project->status='discard';
 
         if ($project->save()) {
@@ -189,3 +208,4 @@ class ProjectController extends Controller
 
     }
 }
+

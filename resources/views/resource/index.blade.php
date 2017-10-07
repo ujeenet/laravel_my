@@ -9,15 +9,15 @@
         <table class=" table table-striped table-responsive table-bordered table-inverse">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Middlename</th>
-                    <th>Lastname</th>
-                    <th>Phone</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Фамилия</th>
+                    <th>Телефон</th>
                     <th>Email</th>
-                    <th>Position</th>
-                    <th>Birthday</th>
+                    <th>Должность</th>
+                    <th>День рождения</th>
                     @if (Auth::user()->is_admin == 'admin')
-                    <th>Options</th>
+                    <th>Опции</th>
                         @endif
                 </tr>
             </thead>
@@ -49,7 +49,7 @@
                 <add-resource  inline-template>
                     <div class="box box-success collapsed-box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{__('Add Team Mate')}}</h3>
+                            <h3 class="box-title">{{__('Добавить в команду')}}</h3>
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool btn-primary" data-widget="collapse"><i class="fa fa-plus"></i>
                                 </button>
