@@ -41,7 +41,7 @@
                                 <div class="form-group">
                                     <a href="/project/listall/1">
                                         <li class="btn btn-default" style="width: 200px;">
-                                             Активнык
+                                             Активные
                                         </li>
                                     </a>
                                     <strong class="pull-right">{{$active}}</strong>
